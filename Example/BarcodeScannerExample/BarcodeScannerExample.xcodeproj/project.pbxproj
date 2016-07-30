@@ -92,12 +92,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D50BE4071C9FE8870000A34C /* Build configuration list for PBXNativeTarget "BarcodeScannerExample" */;
 			buildPhases = (
-				36F8214472FD1CA639982CE8 /* 📦 Check Pods Manifest.lock */,
+				36F8214472FD1CA639982CE8 /* [CP] Check Pods Manifest.lock */,
 				D50BE3F11C9FE8870000A34C /* Sources */,
 				D50BE3F21C9FE8870000A34C /* Frameworks */,
 				D50BE3F31C9FE8870000A34C /* Resources */,
-				E090C912AA824DD28A310598 /* 📦 Embed Pods Frameworks */,
-				B23721B8976E46E75F5C472C /* 📦 Copy Pods Resources */,
+				E090C912AA824DD28A310598 /* [CP] Embed Pods Frameworks */,
+				B23721B8976E46E75F5C472C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -115,11 +115,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hyper Interaktiv AS";
 				TargetAttributes = {
 					D50BE3F41C9FE8870000A34C = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = NYVPFVKF3S;
+						DevelopmentTeamName = "Red Beacon, Inc.";
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -154,14 +157,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		36F8214472FD1CA639982CE8 /* 📦 Check Pods Manifest.lock */ = {
+		36F8214472FD1CA639982CE8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,14 +172,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B23721B8976E46E75F5C472C /* 📦 Copy Pods Resources */ = {
+		B23721B8976E46E75F5C472C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,14 +187,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BarcodeScannerExample/Pods-BarcodeScannerExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E090C912AA824DD28A310598 /* 📦 Embed Pods Frameworks */ = {
+		E090C912AA824DD28A310598 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +269,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -302,6 +306,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -315,6 +320,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.BarcodeScannerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -327,6 +333,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.BarcodeScannerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

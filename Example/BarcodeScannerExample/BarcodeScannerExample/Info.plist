@@ -32,6 +32,10 @@
 	<false/>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access needed</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library access needed</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

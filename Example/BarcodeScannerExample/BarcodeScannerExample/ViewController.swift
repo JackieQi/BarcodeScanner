@@ -42,11 +42,30 @@ extension ViewController: BarcodeScannerCodeDelegate {
 
   func barcodeScanner(_ controller: BarcodeScannerController, didCapturedCode code: String) {
     print(code)
-
-    let delayTime = DispatchTime.now() + Double(Int64(6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    DispatchQueue.main.asyncAfter(deadline: delayTime) {
-      controller.resetWithError()
+    if let controller = presentedViewController {
+      presentAlert(code: code, from: controller)
     }
+    
+    controller.resetWithError()
+//    let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+//      controller.resetWithError()
+//    }
+  }
+  
+  private func presentAlert(code: String, from: UIViewController?) {
+    if from != nil {
+      let alertController = UIAlertController(title: nil, message: code, preferredStyle: .alert)
+      from!.present(alertController, animated: true) {
+        let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: {
+          alertController.dismiss(animated: true, completion: {
+            
+          })
+        })
+      }
+    }
+    
   }
 }
 

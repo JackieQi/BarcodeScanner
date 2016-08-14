@@ -10,7 +10,7 @@ public protocol BarcodeScannerCodeDelegate: class {
 
 /// Delegate to report errors.
 public protocol BarcodeScannerErrorDelegate: class {
-  func barcodeScanner(_ controller: BarcodeScannerController, didReceiveError error: ErrorProtocol)
+  func barcodeScanner(_ controller: BarcodeScannerController, didReceiveError error: Error)
 }
 
 /// Delegate to dismiss barcode scanner when the close button has been pressed.
@@ -52,10 +52,10 @@ public class BarcodeScannerController: UIViewController {
   /// Animated focus view.
   lazy var focusView: UIView = {
     let view = UIView()
-    view.layer.borderColor = UIColor.white().cgColor
+    view.layer.borderColor = UIColor.white.cgColor
     view.layer.borderWidth = 2
     view.layer.cornerRadius = 5
-    view.layer.shadowColor = UIColor.white().cgColor
+    view.layer.shadowColor = UIColor.white.cgColor
     view.layer.shadowRadius = 10.0
     view.layer.shadowOpacity = 0.9
     view.layer.shadowOffset = CGSize.zero
@@ -67,7 +67,7 @@ public class BarcodeScannerController: UIViewController {
   /// Button that opens settings to allow camera usage.
   lazy var settingsButton: UIButton = { [unowned self] in
     let button = UIButton(type: .system)
-    let title = AttributedString(string: SettingsButton.text,
+    let title = NSAttributedString(string: SettingsButton.text,
       attributes: [
         NSFontAttributeName : SettingsButton.font,
         NSForegroundColorAttributeName : SettingsButton.color,
@@ -99,11 +99,9 @@ public class BarcodeScannerController: UIViewController {
 
       guard status.state != .notFound else {
         infoView.status = status
-
-        DispatchQueue.main.after(
-          when: DispatchTime.now() + Double(Int64(2.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
-            self.status = Status(.scanning)
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+          self.status = Status(.scanning)
+        })
 
         return
       }
@@ -181,7 +179,7 @@ public class BarcodeScannerController: UIViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = UIColor.black()
+    view.backgroundColor = UIColor.black
     view.layer.addSublayer(videoPreviewLayer)
 
     [infoView, headerView, settingsButton, flashButton, focusView].forEach {
@@ -204,7 +202,7 @@ public class BarcodeScannerController: UIViewController {
 
     setupFrames()
     infoView.setupFrames()
-    headerView.isHidden = !isBeingPresented()
+    headerView.isHidden = !isBeingPresented
   }
 
   public override func viewDidAppear(_ animated: Bool) {
@@ -340,7 +338,7 @@ public class BarcodeScannerController: UIViewController {
 
   // MARK: - Orientation
 
-  public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+  override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
 
@@ -353,7 +351,7 @@ public class BarcodeScannerController: UIViewController {
    */
   func animateFlash(_ processing: Bool = false) {
     let flashView = UIView(frame: view.bounds)
-    flashView.backgroundColor = UIColor.white()
+    flashView.backgroundColor = UIColor.white
     flashView.alpha = 1
 
     view.addSubview(flashView)
@@ -396,7 +394,7 @@ public class BarcodeScannerController: UIViewController {
   func settingsButtonDidPress() {
     DispatchQueue.main.async {
       if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
-        UIApplication.shared().openURL(settingsURL)
+        UIApplication.shared.openURL(settingsURL)
       }
     }
   }

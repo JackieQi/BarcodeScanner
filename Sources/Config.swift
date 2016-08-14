@@ -6,19 +6,19 @@ import AVFoundation
 public struct Title {
   public static var text = NSLocalizedString("Scan barcode", comment: "")
   public static var font = UIFont.boldSystemFont(ofSize: 17)
-  public static var color = UIColor.black()
+  public static var color = UIColor.black
 }
 
 public struct CloseButton {
   public static var text = NSLocalizedString("Close", comment: "")
   public static var font = UIFont.boldSystemFont(ofSize: 17)
-  public static var color = UIColor.black()
+  public static var color = UIColor.black
 }
 
 public struct SettingsButton {
   public static var text = NSLocalizedString("Settings", comment: "")
   public static var font = UIFont.boldSystemFont(ofSize: 17)
-  public static var color = UIColor.white()
+  public static var color = UIColor.white
 }
 
 public struct Info {
@@ -32,13 +32,13 @@ public struct Info {
     "In order to scan barcodes you have to allow camera under your settings.", comment: "")
 
   public static var font = UIFont.boldSystemFont(ofSize: 14)
-  public static var textColor = UIColor.black()
-  public static var tint = UIColor.black()
+  public static var textColor = UIColor.black
+  public static var tint = UIColor.black
 
   public static var loadingFont = UIFont.boldSystemFont(ofSize: 16)
-  public static var loadingTint = UIColor.black()
+  public static var loadingTint = UIColor.black
 
-  public static var notFoundTint = UIColor.red()
+  public static var notFoundTint = UIColor.red
 }
 
 /**

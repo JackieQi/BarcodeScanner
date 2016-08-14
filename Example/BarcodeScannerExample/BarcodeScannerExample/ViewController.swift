@@ -5,9 +5,9 @@ class ViewController: UIViewController {
 
   lazy var button: UIButton = {
     let button = UIButton(type: .system)
-    button.backgroundColor = UIColor.black()
+    button.backgroundColor = UIColor.black
     button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
-    button.setTitleColor(UIColor.white(), for: UIControlState())
+    button.setTitleColor(UIColor.white, for: UIControlState())
     button.setTitle("Scan", for: UIControlState())
     button.addTarget(self, action: #selector(buttonDidPress), for: .touchUpInside)
 
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = UIColor.white()
+    view.backgroundColor = UIColor.white
     view.addSubview(button)
   }
 
@@ -44,7 +44,7 @@ extension ViewController: BarcodeScannerCodeDelegate {
     print(code)
 
     let delayTime = DispatchTime.now() + Double(Int64(6 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    DispatchQueue.main.after(when: delayTime) {
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
       controller.resetWithError()
     }
   }
@@ -52,7 +52,7 @@ extension ViewController: BarcodeScannerCodeDelegate {
 
 extension ViewController: BarcodeScannerErrorDelegate {
 
-  func barcodeScanner(_ controller: BarcodeScannerController, didReceiveError error: ErrorProtocol) {
+  func barcodeScanner(_ controller: BarcodeScannerController, didReceiveError error: Error) {
     print(error)
   }
 }
